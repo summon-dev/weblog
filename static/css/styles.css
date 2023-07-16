@@ -1,0 +1,33 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Lilita One', cursive; */
+
+}
+
+.masthead {
+    background-color: #cccccc;
+    background-image: url('../img/back-banner-img.jpg');
+    background-size: cover;
+    height: 100px;
+}
+
+.navbar-brand {
+    font-family: 'Lilita One', cursive;
+
+}
+
+.container-post {
+    /* background-color: #FBEEAC; */
+    align-items: center;
+    align-content: center;
+    /* text-align: center; */
+    padding-top: 15px;
+    padding-left: 20%;
+    padding-right: 20%;
+    width: 80%;
+}
+
+.card-div-pos {
+    align-items: center;
+    align-self: center;
+}
