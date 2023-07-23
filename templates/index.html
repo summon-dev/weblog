@@ -1,8 +1,8 @@
 {% include "header.html" %}
 
 <!-- Page Header -->
-<header class="masthead">
-    <div class="overlay"></div>
+<header class="masthead" style="background-image: url('../static/img/back-banner-img.jpg');">
+    <div class="overlay">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
@@ -13,27 +13,35 @@
             </div>
         </div>
     </div>
+</div>
 </header>
 
 <!--  Main Content -->
 
-<div class="container container-post">
+<div class="container container-post p-lg-5 p-sm-1">
     <div>
+        {% for post in posts %}
         <div class="card mb-3 card-div-pos">
             <img class="card-img-top"
-                src="https://www.reuters.com/resizer/5vkMsf96xC8LD6pqOpMwMkcq96k=/960x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/5R35K5J7YFJ3DDUQRVT67HNQO4.jpg"
+                src= {{ post.img_url }}
                 alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="{{url_for('show_post', post_id=post.id)}}">
+                <h5 class="card-title">{{ post.title }}</h5>
+            </a>
+                <p class="card-text">{{ post.body | safe}}</p>
+                <p class="card-text"><small class="text-muted">{{ post.date }}</small></p>
+                
                 <a href="#" class="card-link">Delete</a>
                 <a href="#" class="card-link">Edit</a>
             </div>
+
         </div>
+        {% endfor %}
         <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#"> Create New Post</a>
+            {% if current_user.id == 1%}
+            <a class="btn btn-primary float-right" href="{{url_for('create_post')}}"> Create New Post</a>
+            {% endif %}
         </div>
     </div>
 

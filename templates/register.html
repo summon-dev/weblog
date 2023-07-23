@@ -1,4 +1,7 @@
 {% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
 
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('../static/img/back-banner-img.jpg');">
@@ -7,15 +10,21 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1 style="color: white;">About</h1>
-                    <span class="subheading" style="color: white;">I have no special talent. I am only passionately curious.
-                        Albert Einstein
+                    <h1 style="color: white;">Register</h1>
+                    <span class="subheading" style="color: white;">Please fill in the form and submit
                         </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
 <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"})}}
+        </div>
+    </div>
+
 
 </div>

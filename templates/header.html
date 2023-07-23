@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Sample Bolg</title>
+    <title>SUMMON-DEV Bolg</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,8 @@
         href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@300&family=Sacramento&display=swap"
         rel="stylesheet">
     <!-- local style -->
-    <link href="./static/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- <link href="./static/css/styles.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -34,14 +35,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
+                {% if not current_user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
+                    <a class="nav-link" href="{{url_for('login')}}">Log In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="{{url_for('register')}}">Register</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log Out</a>
+                    <a class="nav-link" href="{{url_for('log_out')}}">Log Out</a>
                 </li>
                 <li class="nav-item"> 
                     <a class="nav-link" href="{{ url_for('about') }}">About</a>
