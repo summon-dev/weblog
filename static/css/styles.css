@@ -41,7 +41,14 @@ body {
 
 /* Making Top Card image responsive and with proper sizing */
 .card-img-top {
+
     width: 100%;
     height: 30vh;
     object-fit: cover;
+}
+
+.post-card-container {
+    padding-top: 15px;
+    padding-left: 10%;
+    padding-right: 10%;
 }

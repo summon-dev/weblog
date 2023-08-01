@@ -2,7 +2,7 @@
 
 
 <!-- Post pic and heder -->
-<header class="masthead-post" style="background-image: url('{{post.img_url}}');">
+<!-- <header class="masthead-post" style="background-image: url('{{post.img_url}}');">
 
     <div class="overlay">
         <div class="container">
@@ -16,4 +16,16 @@
             </div>
         </div>
     </div>
-</header>
+</header> -->
+
+<!-- testing card as post page -->
+<div class="post-card-container">
+    <div class="card mb-3 post-card">
+        <img class="card-img-top" style="height: 300px" src={{post.img_url}} alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{post.body | safe}}</p>
+            <p class="card-text"><small class="text-muted">{{ post.p_date }}</small></p>
+        </div>
+    </div>
+</div>

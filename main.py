@@ -154,5 +154,29 @@ def show_post(post_id):
     return render_template('post.html', post=post)
 
 
+@app.route('/delete_post/<int:post_id>')
+def delete_post(post_id):
+    post = Posts.query.get(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('home'))
+
+
+@app.route('/edit/<int:post_id>', methods=['POST', 'GET'])
+def edit_post(post_id):
+    post = Posts.query.get(post_id)
+    edit_form = CreatePostForm(obj=post)
+
+    if edit_form.validate_on_submit():
+        post.title = edit_form.title.data
+        post.subtitle = edit_form.subtitle.data
+        post.img_url = edit_form.img_url.data
+        post.body = edit_form.body.data
+        db.session.commit()
+        return redirect(url_for('show_post', post_id=post.id))
+
+    return render_template('new_post.html', form=edit_form, user=current_user)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
