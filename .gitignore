@@ -4,3 +4,4 @@ static/img/card-img-holder.jpg
 test.py
 __pycache__
 .gitignore
+__pycache__/forms.cpython-310.pyc
