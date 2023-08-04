@@ -30,6 +30,9 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+
+login_manager.login_view = "login"
+
 # DB Configuration
 
 
@@ -169,6 +172,7 @@ def show_post(post_id):
 
 
 @app.route('/delete_post/<int:post_id>')
+@login_required
 def delete_post(post_id):
     post = Posts.query.get(post_id)
     db.session.delete(post)
@@ -177,6 +181,7 @@ def delete_post(post_id):
 
 
 @app.route('/edit/<int:post_id>', methods=['POST', 'GET'])
+@login_required
 def edit_post(post_id):
     post = Posts.query.get(post_id)
     edit_form = CreatePostForm(obj=post)
