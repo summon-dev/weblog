@@ -97,7 +97,7 @@ def register():
                     password=user_password, name=reg_form.name.data)
         db.session.add(user)
         db.session.commit()
-        # login_user(user)
+        login_user(user)
         return redirect(url_for('home'))
 
     return render_template('register.html', form=reg_form)
@@ -147,11 +147,25 @@ def create_post():
     return render_template('new_post.html', form=post_form, user=current_user)
 
 
-@app.route('/post/<int:post_id>')
+@app.route('/post/<int:post_id>', methods=['POST', 'GET'])
 def show_post(post_id):
     post = Posts.query.get(post_id)
-    print(post.img_url)
-    return render_template('post.html', post=post)
+    comments = Comments.query.filter_by(post_id=post_id)
+    form = CommentForm()
+    logged_in = current_user.is_authenticated
+    if logged_in:
+        print("logged_in")
+    # print(post.img_url)
+    if form.validate_on_submit():
+        new_comment = Comments(post_id=post_id,
+                               author_id=current_user.id,
+                               parent_post=post,
+                               comment_author=current_user,
+                               text=form.comment.data)
+        db.session.add(new_comment)
+        db.session.commit()
+        return redirect(url_for('show_post', post_id=post_id))
+    return render_template('post.html', post=post, comments=comments, form=form, logged_in=logged_in)
 
 
 @app.route('/delete_post/<int:post_id>')

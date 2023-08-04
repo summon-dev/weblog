@@ -52,3 +52,23 @@ body {
     padding-left: 10%;
     padding-right: 10%;
 }
+
+.commentList {
+    padding-bottom: 20px;
+}
+
+.commenterImage {
+    width: 40px;
+    margin-right: 5px;
+    height: 100%;
+    float: left;
+}
+
+.commentList {
+    list-style: none;
+}
+
+.commenterImage img {
+    border-radius: 50%;
+    width: 100%;
+}

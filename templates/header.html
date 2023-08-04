@@ -24,7 +24,7 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#1D5D9B;">
-        <a class="navbar-brand" href="{{url_for('home')}}">SUMON-DEV</a>
+        <a class="navbar-brand" href="{{url_for('home')}}">SUMMON-DEV</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,9 +43,11 @@
                     <a class="nav-link" href="{{url_for('register')}}">Register</a>
                 </li>
                 {% endif %}
+                {% if current_user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('log_out')}}">Log Out</a>
                 </li>
+                {% endif %}
                 <li class="nav-item"> 
                     <a class="nav-link" href="{{ url_for('about') }}">About</a>
                 </li>
