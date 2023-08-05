@@ -9,6 +9,7 @@ from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from forms import UserLogInForm, UserRegisterationForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
+import os
 
 
 app = Flask(__name__)
