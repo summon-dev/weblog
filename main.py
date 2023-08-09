@@ -13,14 +13,15 @@ import os
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "c7e606b42bcce59a270a1c15e0d673da8cc953d44b546b1e59a53e245abfd03f"
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False,
                     force_lower=False, use_ssl=False, base_url=None)
-
-# DB Connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+print(os.getenv("SECRET_KEY"))
+# DB Connection  'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    "DATABASE_URL", "sqlite:///blog.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 login_manager = LoginManager()
@@ -32,6 +33,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+# The view in case the user is not authenticated
 login_manager.login_view = "login"
 
 # DB Configuration

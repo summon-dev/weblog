@@ -4,3 +4,6 @@ test.py
 __pycache__
 .gitignore
 __pycache__/forms.cpython-310.pyc
+instance/blog.db
+env.txt
+instance/blog.db
