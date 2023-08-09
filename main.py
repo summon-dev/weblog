@@ -71,9 +71,10 @@ class Comments(db.Model):
     comment_author = relationship('User', back_populates='comments')
     text = db.Column(db.Text, nullable=False)
 
+
 # Execute Once to build DB tables
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')
